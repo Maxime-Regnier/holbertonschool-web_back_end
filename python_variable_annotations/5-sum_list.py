@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Module that contains the sum_list function"""
+
 from typing import List
 
 
