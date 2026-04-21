@@ -12,11 +12,13 @@ def index_range(page: int, page_size: int) -> tuple:
 
 
 class Server:
-    
+
     DATA_FILE = "Popular_Baby_Names.csv"
+
     def __init__(self):
         """Server class to paginate a database of popular baby names"""
         self.__dataset = None
+
     def dataset(self) -> List[List]:
         """Cached dataset"""
         if self.__dataset is None:
@@ -25,6 +27,7 @@ class Server:
                 dataset = [row for row in reader]
                 self.__dataset = dataset[1:]
         return self.__dataset
+
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Get a page of the dataset"""
         assert isinstance(page, int) and page > 0
@@ -34,6 +37,7 @@ class Server:
         if start >= len(data):
             return []
         return data[start:end]
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """Get a page with hypermedia pagination metadata"""
         data = self.get_page(page, page_size)
