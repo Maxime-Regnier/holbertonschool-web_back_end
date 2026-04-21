@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Simple pagination module"""
 import csv
 import math
 from typing import List, Dict, Any, Tuple
@@ -11,11 +12,12 @@ def index_range(page: int, page_size: int) -> tuple:
 
 
 class Server:
+    
     DATA_FILE = "Popular_Baby_Names.csv"
-
+    """Server class to paginate a database of popular baby names"""
     def __init__(self):
         self.__dataset = None
-
+    """Cached dataset"""
     def dataset(self) -> List[List]:
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -23,7 +25,7 @@ class Server:
                 dataset = [row for row in reader]
                 self.__dataset = dataset[1:]
         return self.__dataset
-
+    """Get a page of the dataset"""
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
@@ -32,7 +34,7 @@ class Server:
         if start >= len(data):
             return []
         return data[start:end]
-
+    """Get a page with hypermedia pagination metadata"""
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         data = self.get_page(page, page_size)
         total_items = len(self.dataset())
