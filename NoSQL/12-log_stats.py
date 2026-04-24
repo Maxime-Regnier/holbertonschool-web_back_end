@@ -12,4 +12,4 @@ def log_stats():
     status = collection.count_documents({"method": "GET", "path": "/status"})
     print(f"{status} status check")
 if __name__ == "__main__":
-            log_stats()
+    log_stats()
