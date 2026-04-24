@@ -1,0 +1,2 @@
+// my comment
+deb.school.deleteMany({name: "Holberton school"})
