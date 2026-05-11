@@ -3,3 +3,7 @@ package.json
 package-lock.json
 nodesource_setup.sh
 .claude
+Node_JS_basic/.eslintrc.js
+Node_JS_basic/babel.config.js
+Node_JS_basic/database.csv
+Node_JS_basic/package-lock.json
